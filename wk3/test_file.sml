@@ -32,3 +32,9 @@ val b5 = longest_capitalized ["one", "two", "a"] = ""
 val c5 = longest_capitalized ["Test", "Geoffrey", "Titleist123"] = "Titleist123"
 val d5 = longest_capitalized ["A", "onetwothreefour"] = "A"
 val e5 = longest_capitalized ["A"] = "A"
+
+(* Problem 6 tests *)
+val a6 = rev_string "test" = "tset"
+val b6 = rev_string "Geoffrey" = "yerffoeG"
+val c6 = rev_string "Hello, World" = "dlroW ,olleH"
+val d6 = rev_string "" = ""
