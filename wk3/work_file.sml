@@ -62,3 +62,10 @@ val longest_capitalized = longest_string2 o only_capitals
 
 val rev_string  =
 	String.implode o List.rev o String.explode
+
+fun first_answer function_supplied al = 
+	case al of 
+		[] => raise NoAnswer
+	| 	x::xs' => case function_supplied x of
+						NONE => first_answer function_supplied xs'
+					| 	SOME(x) => x 

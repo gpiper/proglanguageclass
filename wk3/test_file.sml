@@ -38,3 +38,9 @@ val a6 = rev_string "test" = "tset"
 val b6 = rev_string "Geoffrey" = "yerffoeG"
 val c6 = rev_string "Hello, World" = "dlroW ,olleH"
 val d6 = rev_string "" = ""
+
+(* Problem 7 *)
+val a7 = first_answer (fn x => if (x mod 2 = 0) then SOME(x) else NONE) [1,2,3] = 2
+(*val b2 = (first_answer (fn x => if x > 10 then SOME(x) else NONE) [1,2,3]) handle NoAnswer => print "Caught exception"*)
+val c7 = first_answer (fn x => if (x mod 2 <> 0) then SOME(x) else NONE) [1,2,3] = 1
+
