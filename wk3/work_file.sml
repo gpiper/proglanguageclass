@@ -81,7 +81,7 @@ fun all_answer function_supplied al =
 				[] => SOME acc
 			|	x::xs' => case function_supplied x of
 							NONE => NONE
-						|	SOME(y) => helper(xs', y @ acc)
+						|	SOME(y) => helper(xs', acc @ y)
 	in
 		helper(al, [])
 		
@@ -96,4 +96,4 @@ val count_wild_and_variable_lengths = g (fn () => 1) (fn x => String.size x)
 (* Problem 9c *)
 fun count_some_vars (s, p) = g (fn () => 0) (fn x => if x = s then 1 else 0) p
 
-(* Problem 10 *)
+

@@ -45,8 +45,10 @@ val a7 = first_answer (fn x => if (x mod 2 = 0) then SOME(x) else NONE) [1,2,3] 
 val c7 = first_answer (fn x => if (x mod 2 <> 0) then SOME(x) else NONE) [1,2,3] = 1
 
 (* Problem 8 *)
-(*val a8 = all_answer (fn x => if (x mod 2 = 0) then SOME(x) else NONE) [1,2,3] = NONE
-val b8 = all_answer (fn x => if (x mod 2 = 0) then SOME(x) else NONE) [2,4,6] = SOME [2,4,6]*)
+val a8 = all_answer (fn x => if (x mod 2 = 0) then SOME [x] else NONE) [1,2,3] = NONE
+val b8 = all_answer (fn x => if (x mod 2 = 0) then SOME [x] else NONE) [2,4,6] = SOME [2,4,6]
+val c8 = all_answer (fn x => if x = "test" then SOME[x] else NONE) ["test"] = SOME ["test"]
+val d8 = all_answer (fn x => if x = "test" then SOME[x] else NONE) ["test", "none"] = NONE
 
 (* Problem 9a *)
 val a9a = count_wildcards Wildcard = 1
@@ -56,7 +58,13 @@ val c9a = count_wildcards (TupleP [Wildcard, Variable "test", Wildcard, TupleP[W
 (* Problem 9b *)
 val a9b = count_wild_and_variable_lengths Wildcard = 1
 val b9b = count_wild_and_variable_lengths (Variable "test") = 4
-val c9b = count_wild_and_variable_lengths (TupleP [Wildcard, Variable "test", Wildcard, TupleP[Wildcard]]) = 7
+val c9b = count_wild_and_variable_lengths (TupleP [Wildcard, Variable "test", Wildcard, TupleP [Wildcard]]) = 7
+val d9b = count_wild_and_variable_lengths (ConstructorP("test", Wildcard)) = 1
+
+val a9c = count_some_vars ("test", (Variable "test")) = 1
+val b9c = count_some_vars ("test", (TupleP [Variable "test", Variable "test", Wildcard, TupleP [Variable "test"]])) = 3
+val c9c = count_some_vars ("test", Wildcard) = 0
+
 
 
 
