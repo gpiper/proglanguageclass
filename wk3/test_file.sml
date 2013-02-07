@@ -44,3 +44,22 @@ val a7 = first_answer (fn x => if (x mod 2 = 0) then SOME(x) else NONE) [1,2,3] 
 (*val b2 = (first_answer (fn x => if x > 10 then SOME(x) else NONE) [1,2,3]) handle NoAnswer => print "Caught exception"*)
 val c7 = first_answer (fn x => if (x mod 2 <> 0) then SOME(x) else NONE) [1,2,3] = 1
 
+(* Problem 8 *)
+(*val a8 = all_answer (fn x => if (x mod 2 = 0) then SOME(x) else NONE) [1,2,3] = NONE
+val b8 = all_answer (fn x => if (x mod 2 = 0) then SOME(x) else NONE) [2,4,6] = SOME [2,4,6]*)
+
+(* Problem 9a *)
+val a9a = count_wildcards Wildcard = 1
+val b9a = count_wildcards (Variable "test") = 0
+val c9a = count_wildcards (TupleP [Wildcard, Variable "test", Wildcard, TupleP[Wildcard]]) = 3
+
+(* Problem 9b *)
+val a9b = count_wild_and_variable_lengths Wildcard = 1
+val b9b = count_wild_and_variable_lengths (Variable "test") = 4
+val c9b = count_wild_and_variable_lengths (TupleP [Wildcard, Variable "test", Wildcard, TupleP[Wildcard]]) = 7
+
+
+
+
+
+

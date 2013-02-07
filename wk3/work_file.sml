@@ -58,14 +58,42 @@ fun longest_string_helper function_supplied ls =
 val longest_string3 = longest_string_helper (fn (s1, s2) => if  s1 > s2 then true else false)
 val longest_string4 = longest_string_helper (fn (s1, s2) => if s1 >= s2 then true else false)
 
+(* Problem 5*)
 val longest_capitalized = longest_string2 o only_capitals
 
+(* Problem 6 *)
 val rev_string  =
 	String.implode o List.rev o String.explode
 
+(* Problem 7 *)
 fun first_answer function_supplied al = 
 	case al of 
 		[] => raise NoAnswer
 	| 	x::xs' => case function_supplied x of
 						NONE => first_answer function_supplied xs'
-					| 	SOME(x) => x 
+					| 	SOME(y) => y 
+
+(* Problem 8 *)
+fun all_answer function_supplied al = 
+	let
+		fun helper(ls ,acc) =
+			case ls of
+				[] => SOME acc
+			|	x::xs' => case function_supplied x of
+							NONE => NONE
+						|	SOME(y) => helper(xs', y @ acc)
+	in
+		helper(al, [])
+		
+	end
+
+(* Problem 9a *)
+val count_wildcards = g (fn () => 1) (fn x => 0)
+
+(* Problem 9b *)
+val count_wild_and_variable_lengths = g (fn () => 1) (fn x => String.size x)
+
+(* Problem 9c *)
+fun count_some_vars (s, p) = g (fn () => 0) (fn x => if x = s then 1 else 0) p
+
+(* Problem 10 *)
