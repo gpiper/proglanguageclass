@@ -96,4 +96,26 @@ val count_wild_and_variable_lengths = g (fn () => 1) (fn x => String.size x)
 (* Problem 9c *)
 fun count_some_vars (s, p) = g (fn () => 0) (fn x => if x = s then 1 else 0) p
 
+(* Problem 10 *)
+fun check_pat p =
+	let
+		fun list_builder pa =
+			case pa of
+			 	Variable x        	=> [x]
+		  	| 	TupleP ps         	=> List.foldl (fn (p,i) => i @ list_builder p) [] ps
+		  	| 	ConstructorP(s,pat) => [s] @ (list_builder pat)
+		  	| 	_                 	=> [] 
+
+		fun no_repeats(li) =
+			case li of
+				[] => true
+			|	x::[] => true
+			|	x::xs' => (List.exists (fn y => x <> y) xs') andalso no_repeats(xs')
+	in
+		no_repeats(list_builder p)
+	end
+
+(* Problem 11 *)
+
+(* Problem 12 *)
 
