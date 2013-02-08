@@ -74,7 +74,7 @@ fun first_answer function_supplied al =
 					| 	SOME(y) => y 
 
 (* Problem 8 *)
-fun all_answer function_supplied al = 
+fun all_answers function_supplied al = 
 	let
 		fun helper(ls ,acc) =
 			case ls of
@@ -116,6 +116,15 @@ fun check_pat p =
 	end
 
 (* Problem 11 *)
+fun match (v, p) =
+	case (v, p) of
+	 	(_, Wildcard) => SOME []
+	|	(v, Variable s) => SOME [(s, v)]
+	|	(Unit, UnitP) => SOME []
+	|	(Const x, ConstP y) => if x = y then SOME [] else NONE 
+	(*|	(Tuple vs, TupleP ps) => SOME (ListPair.zip ())*)
+	|	(Constructor(n, value), ConstructorP(s, pat)) => if n = s then (match (value, pat)) else NONE
+	|	_ => NONE
+
 
 (* Problem 12 *)
-

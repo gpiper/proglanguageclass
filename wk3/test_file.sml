@@ -45,10 +45,10 @@ val a7 = first_answer (fn x => if (x mod 2 = 0) then SOME(x) else NONE) [1,2,3] 
 val c7 = first_answer (fn x => if (x mod 2 <> 0) then SOME(x) else NONE) [1,2,3] = 1
 
 (* Problem 8 *)
-val a8 = all_answer (fn x => if (x mod 2 = 0) then SOME [x] else NONE) [1,2,3] = NONE
-val b8 = all_answer (fn x => if (x mod 2 = 0) then SOME [x] else NONE) [2,4,6] = SOME [2,4,6]
-val c8 = all_answer (fn x => if x = "test" then SOME[x] else NONE) ["test"] = SOME ["test"]
-val d8 = all_answer (fn x => if x = "test" then SOME[x] else NONE) ["test", "none"] = NONE
+val a8 = all_answers (fn x => if (x mod 2 = 0) then SOME [x] else NONE) [1,2,3] = NONE
+val b8 = all_answers (fn x => if (x mod 2 = 0) then SOME [x] else NONE) [2,4,6] = SOME [2,4,6]
+val c8 = all_answers (fn x => if x = "test" then SOME[x] else NONE) ["test"] = SOME ["test"]
+val d8 = all_answers (fn x => if x = "test" then SOME[x] else NONE) ["test", "none"] = NONE
 
 (* Problem 9a *)
 val a9a = count_wildcards Wildcard = 1
