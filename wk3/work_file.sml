@@ -128,4 +128,10 @@ fun match (v, p) =
 
 
 (* Problem 12 *)
+fun first_match v pl = 
+	case pl of
+		[] => NONE
+	|	x::xs => SOME (first_answer (fn (x, y) => match(x,y)) [(v,x)])
+		handle NoAnswer => (first_match v xs)
+
 	
