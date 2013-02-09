@@ -70,7 +70,14 @@ val c9c = count_some_vars ("test", Wildcard) = 0
 val a10 = check_pat (TupleP[ ConstructorP ("geoff",(Variable "test")),ConstructorP ("test",(ConstP 4))]) = false
 val b10 = check_pat (TupleP[ ConstructorP ("egg",(Variable "salad")),ConstructorP ("sandwhich",(ConstP 4))]) = true
 
-
+(* Problem 11 *)
+val a11 = match( Tuple[Const 49, Const 6, Unit, Const 8], 
+           TupleP[ConstP 49, Variable "Geoff", Wildcard, ConstP 8] ) = SOME [("Geoff",Const 6)];
+val b11 = match(Unit, UnitP) = SOME []
+val c11 = match (Const 57, ConstP 57) = SOME[]
+val d11 = match (Unit, Wildcard) = SOME []
+val e11 = match (Unit, Variable "test") = SOME [("test", Unit)]
+val f11 = match (Constructor("test", Unit) , ConstructorP("test", Wildcard)) = SOME []
 
 
 

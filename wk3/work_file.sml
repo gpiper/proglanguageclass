@@ -122,9 +122,10 @@ fun match (v, p) =
 	|	(v, Variable s) => SOME [(s, v)]
 	|	(Unit, UnitP) => SOME []
 	|	(Const x, ConstP y) => if x = y then SOME [] else NONE 
-	(*|	(Tuple vs, TupleP ps) => SOME (ListPair.zip ())*)
-	|	(Constructor(n, value), ConstructorP(s, pat)) => if n = s then (match (value, pat)) else NONE
+	|	(Tuple vs, TupleP ps) => all_answers (fn (x, y) => match(x, y)) (ListPair.zip(vs, ps))
+	|	(Constructor(n, value), ConstructorP(s, pat)) => if n = s then match(value, pat) else NONE
 	|	_ => NONE
 
 
 (* Problem 12 *)
+	
