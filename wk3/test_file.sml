@@ -83,6 +83,6 @@ val f11 = match (Constructor("test", Unit) , ConstructorP("test", Wildcard)) = S
 (* Problem 12 *)
 val a12 = first_match Unit [UnitP] = SOME []
 val b12 = first_match (Const 57) [ConstP 79] = NONE
-val c12 = first_match (Tuple [Const 49, Const 6, Unit, Const 8]) ([TupleP [ConstP 49, (Variable "Geoff"), Wildcard, ConstP 8]])
+val c12 = first_match (Tuple [Const 49, Const 6, Unit, Const 8]) ([TupleP [ConstP 49, (Variable "Geoff"), Wildcard, ConstP 8]]) = SOME [("Geoff",Const 6)]
 
 
